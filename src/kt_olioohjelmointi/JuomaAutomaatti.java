@@ -1,18 +1,18 @@
 package kt_olioohjelmointi;
 
-public class JuomaAutomaatti {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	private int teetä;
-	private int kahvia;
-	private int kaakaota;
-	
-	//konstruktorit
-	
+public class JuomaAutomaatti implements ActionListener {
+
+	private static int teetä;
+	private static int kahvia;
+	private static int kaakaota;
+		
 	public JuomaAutomaatti() {
 		teetä = 50;
 		kahvia = 50;
 		kaakaota = 50;
-		
 	}
 	
 	public JuomaAutomaatti(int tee, int kahvi, int kaakao) {
@@ -20,31 +20,25 @@ public class JuomaAutomaatti {
 		kahvia = kahvi;
 		kaakaota = kaakao;
 	}
-	
-	//metodit
-	
-	public void valmistaKahvi() {
+		
+	public void valmistaKahvi() {	
 		System.out.println("\nOdota hetki, kahvisi valmistuu.");
-
 		if(kahvia >= 10) {
 			kahvia = kahvia - 10;
 		} else {
 			kahvia = 0;
 			System.out.println("\nKahvia ei ole enää jäljellä! Täytä säiliö.");
 		}
-		
 	}
 	
 	public void valmistaTee() {
 		System.out.println("\nOdota hetki, teesi valmistuu.");
-
 		if(teetä >= 10) {
 			teetä = teetä - 10;
 		} else {
 			teetä = 0;
 			System.out.println("\nTeetä ei ole enää jäljellä! Täytä säiliö.");
 			}
-		
 	}
 	
 	public void valmistaKaakao() {
@@ -58,12 +52,9 @@ public class JuomaAutomaatti {
 		}
 		
 	}
-	
-	//getterit ja setterit
-	
+		
 	public void setTee(int uusiTee) {
 		teetä = uusiTee;
-		
 	}
 	
 	public int getTee() {
@@ -86,10 +77,17 @@ public class JuomaAutomaatti {
 		return kaakaota;
 	}
 	
-	//toString()
-	
+	public void kokeilu() {
+		System.out.println(getTee());
+	}
+		
 	public String toString() {
 		return ("JuomaAutomaatti [tee=" + teetä + ", kahvi=" + kahvia + ", kaakao=" + kaakaota + "]");
 	}
-	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
