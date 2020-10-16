@@ -1,6 +1,5 @@
 package kt_olioohjelmointi;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -9,24 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.JTextArea;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -46,7 +35,6 @@ public class JuomaAutomaattiGUI extends JFrame implements Serializable {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
 			}
 		});
 	}
@@ -132,7 +120,7 @@ public class JuomaAutomaattiGUI extends JFrame implements Serializable {
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					sarjallistaminen(JuAut);
+					sarjallistaminen.tallennaAutomaatti(JuAut);
 				} catch (Exception e1) {
 					//e1.printStackTrace();
 					JOptionPane.showMessageDialog(mntmNewMenuItem_3, "Tallennus epäonnistui");
@@ -145,8 +133,7 @@ public class JuomaAutomaattiGUI extends JFrame implements Serializable {
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					JuomaAutomaatti ladattuJuAut = lataaAutomaatti();
-					
+					JuomaAutomaatti ladattuJuAut = sarjallistaminen.lataaAutomaatti();
 				} catch (FileNotFoundException e1) {
 					JOptionPane.showMessageDialog(mntmNewMenuItem_4, "Tiedostoa ei löydy");
 				}
@@ -277,28 +264,5 @@ public class JuomaAutomaattiGUI extends JFrame implements Serializable {
 				} 
 			}
 		});
-	}
-
-	// Sarjallistaminen ja lataaminen
-	
-	public void sarjallistaminen(JuomaAutomaatti JuAut) throws IOException {
-		FileOutputStream tallennus = new FileOutputStream("GUItallennus.xml");
-		XMLEncoder tallentaja = new XMLEncoder(new BufferedOutputStream(tallennus));
-	
-		tallentaja.writeObject(JuAut);
-	
-		tallentaja.close();
-		tallennus.close();
-	}
-	
-	public static JuomaAutomaatti lataaAutomaatti() throws FileNotFoundException {
-		XMLDecoder lataaja = null;
-		FileInputStream tallennus = new FileInputStream("GUItallennus.xml");
-		
-		lataaja = new XMLDecoder(new BufferedInputStream(tallennus));
-		JuomaAutomaatti lataus = (JuomaAutomaatti) lataaja.readObject();
-		
-		lataaja.close();
-		return lataus;
 	}
 }
