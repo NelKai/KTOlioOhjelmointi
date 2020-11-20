@@ -61,7 +61,7 @@ public class kirjaMetodit {
 		try {
 			System.out.println("Luodaan yhteys tietokantaan...");
 			
-			Connection yht_2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjatietokanta", "root", "Oskuonkoira1");
+			Connection yht_2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjatietokanta", "root", "***"); // salasana korvattu "***" -merkeillä
 			Statement stat_2 = yht_2.createStatement();
 			String sqlQuery = "INSERT INTO kirjatiedot (kirjanNimi, kirjailijanNimi, julkaisuVuosi) VALUES (?,?,?)"; // ja suorittaa sql lauseen, joka lisää kirjan tietokantaan
 			PreparedStatement preparedStat = yht_2.prepareStatement(sqlQuery);
@@ -116,7 +116,7 @@ public class kirjaMetodit {
 		try {
 			System.out.println("Luodaan yhteys tietokantaan...");
 			
-			Connection yht_3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjatietokanta", "root", "Oskuonkoira1");
+			Connection yht_3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjatietokanta", "root", "***"); // salasana korvattu "***" -merkeillä
 			Statement stat_3 = yht_3.createStatement();
 			String sqlQuery = "DELETE FROM kirjatiedot WHERE kirjanNimi=?"; // ja suorittaa sql lauseen, joka poistaa kirjan tietokannasta syötetyn nimen perusteella
 			PreparedStatement preparedStat = yht_3.prepareStatement(sqlQuery);
